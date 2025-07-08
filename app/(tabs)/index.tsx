@@ -1,12 +1,22 @@
 import { Image } from "expo-image";
-import { Platform, StyleSheet } from "react-native";
+import { useState } from "react";
+import { StyleSheet } from "react-native";
+import { Button, Text, TextInput } from "react-native-paper";
 
-import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 
 export default function HomeScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [value, setValue] = useState({
+    email: "",
+    password: "",
+  });
+
+  const onSubmit = () => {
+    setValue({ email, password });
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -17,7 +27,22 @@ export default function HomeScreen() {
         />
       }
     >
-      <ThemedView style={styles.titleContainer}>
+      <TextInput value={email} onChange={(e) => setEmail(e.nativeEvent.text)} label="Email" />
+      <TextInput
+        value={password}
+        onChange={(e) => setPassword(e.nativeEvent.text)}
+        secureTextEntry
+        label="Password"
+      />
+
+      <Button onPress={onSubmit} mode="contained">
+        Submit
+      </Button>
+
+      <Text variant="bodyLarge">Current Email: {value.email}</Text>
+      <Text variant="bodyLarge">Current Password: {value.password}</Text>
+
+      {/* <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
@@ -51,7 +76,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
-      </ThemedView>
+      </ThemedView> */}
     </ParallaxScrollView>
   );
 }
