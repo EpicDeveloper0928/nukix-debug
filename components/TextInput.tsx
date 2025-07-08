@@ -46,9 +46,9 @@ export function TextInput(props: TextInputProps) {
           onPressIn={() => setShowPassword(!showPassword)}
         >
           {showPassword ? (
-            <Icon size={24} source="eye" color={theme.colors.outline} />
+            <Icon size={24} source="eye-outline" color={theme.colors.outline} />
           ) : (
-            <Icon size={24} source={"eye-hide"} color={theme.colors.outline} />
+            <Icon size={24} source={"eye-off-outline"} color={theme.colors.outline} />
           )}
         </TouchableOpacity>
       )}
