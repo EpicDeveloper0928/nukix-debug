@@ -1,9 +1,10 @@
 import { Image } from "expo-image";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
-import { Button, Text, TextInput } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { TextInput } from "@/components/TextInput";
 
 export default function HomeScreen() {
   const [email, setEmail] = useState("");
@@ -27,12 +28,11 @@ export default function HomeScreen() {
         />
       }
     >
-      <TextInput value={email} onChange={(e) => setEmail(e.nativeEvent.text)} label="Email" />
+      <TextInput value={email} onChange={(e) => setEmail(e.nativeEvent.text)} />
       <TextInput
         value={password}
         onChange={(e) => setPassword(e.nativeEvent.text)}
         secureTextEntry
-        label="Password"
       />
 
       <Button onPress={onSubmit} mode="contained">
